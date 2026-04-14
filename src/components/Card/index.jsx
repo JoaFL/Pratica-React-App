@@ -1,6 +1,7 @@
 import styles from './Card.module.css';
 
-function Card({img, title, description, price}) {
+
+export default function Card({img, title, description, price}) {
     return <>
     
         <div className={styles.card}>
@@ -12,5 +13,3 @@ function Card({img, title, description, price}) {
 
     </>
 }
-
-export default Card;

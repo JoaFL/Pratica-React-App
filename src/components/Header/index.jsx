@@ -1,6 +1,6 @@
 import styles from './Header.module.css';
 
-function Header() {
+export default function Header() {
     return<>
         <header className={styles.header}>
             <div className={styles.headerBox}>
@@ -17,5 +17,3 @@ function Header() {
         </header>
     </>
 }
-
-export default Header;
