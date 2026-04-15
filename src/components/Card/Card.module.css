@@ -1,12 +1,21 @@
 .card {
     border : 1px solid #ccc;
     border-radius : 8px;
-    width: 320px;
+    width: 200px;
     padding: 16px;
     box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.1);
     margin: 2rem 20px;
 }
 
 .img {
-    width: 140px;
+    width: 100%;
+    border : 1px solid #ccc;
+    box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.price {
+    background-color: rgb(86, 86, 253);
+    color: white;
+    border: 1px solid white;
+    height: 30px;
 }
