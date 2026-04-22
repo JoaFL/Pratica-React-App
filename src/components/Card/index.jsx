@@ -1,15 +1,14 @@
 import styles from './Card.module.css';
 
-
-export default function Card({img, title, description, price}) {
+export default function Card({img, title, description, stock, price}) {
     return <>
     
         <div className={styles.card}>
             <img className={styles.img} src={img} alt={title} />
             <h4 className={styles.title}>{title}</h4>
             <p className={styles.description}>{description}</p>
-            <button className={styles.price}>R$ {price.toFixed(2).replace('.', ',')}</button>
+            <button className={styles.price}>{stock? `R$ ${price.toFixed(2).replace('.', ',')}` : 'Indisponível'}</button>
         </div>
 
-    </>
+    </> 
 }

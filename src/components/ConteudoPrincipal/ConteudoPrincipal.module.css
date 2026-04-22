@@ -4,8 +4,7 @@
     flex-wrap: wrap;
     width: 100%;
     padding: 4px;
-    border: 1px solid black;
     border-radius: 4px;
-    align-items: center;
-    justify-items: center;
+    align-items: top;
+    justify-content: center;
 }
