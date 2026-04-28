@@ -19,3 +19,11 @@
     border: 1px solid white;
     height: 30px;
 }
+
+@media screen and (max-width: 768px) {
+    .card {
+        width: 36%;
+        margin: 10px
+    }
+    
+}
