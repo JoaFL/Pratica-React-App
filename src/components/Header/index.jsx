@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
 
 export default function Header() {
@@ -9,9 +10,9 @@ export default function Header() {
             </div>
             <div className={styles.headerBox}>
                 <nav className={styles.headerNav}>
-                    <a className={styles.headerLink} href="#" >Home</a>
-                    <a className={styles.headerLink} href="#" >Produtos</a>
-                    <a className={styles.headerLink} href="#" >Carrinho</a>
+                    <Link to={"/"}>Home</Link>
+                    <Link to={"/Catalog"}>Produtos</Link>
+                    <Link to={"/Cart"}>Carrinho</Link>
                 </nav>
             </div>
         </header>
