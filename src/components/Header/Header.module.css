@@ -23,11 +23,20 @@
 }
 
 .headerLink {
+    color: white;
     text-align: right;
     text-decoration: none;
     padding: 2%;
     font-weight: bold;
     white-space: nowrap;
+}
+
+.headerLink:hover {
+    transition: 1%;
+    color: rgb(47, 50, 53);
+    background-color: white;
+    border-radius: 5px;
+    transform: scale(0.45rem);
 }
 
 @media screen and (max-width: 768px) {
