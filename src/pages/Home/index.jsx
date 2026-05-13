@@ -1,11 +1,10 @@
-import ConteudoPrincipal from "../../components/ConteudoPrincipal";
+import PrincipaisProdutos from "../../components/ProdutosDestaques";
 
 function Home() {
     return (
         <section>
-            <h1>Eu sou a página inicial</h1>
-            <p>Tudo o que você precisa está aqui!</p>
-            <ConteudoPrincipal />
+            <h1>Produtos em Destaques</h1>
+            <PrincipaisProdutos />
         </section>
     )
 }
