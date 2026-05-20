@@ -22,7 +22,9 @@
 }
 
 .headerNav {
-    justify-content: space-around;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
     text-decoration: none;
     text-align: right;
 }
@@ -31,7 +33,7 @@
     color: white;
     text-align: right;
     text-decoration: none;
-    padding: 2%;
+    padding: 0.5rem 0.75rem;
     font-weight: bold;
     white-space: nowrap;
 }

@@ -12,6 +12,7 @@ export default function Header() {
                 <nav className={styles.headerNav}>
                     <Link className={styles.headerLink} to={"/"}>Home</Link>
                     <Link className={styles.headerLink} to={"/Catalog"}>Produtos</Link>
+                    <Link className={styles.headerLink} to={"/Cart"}>Carrinho</Link>
                     <Link className={styles.headerLink} to={"/AboutUs"}>Sobre nós</Link>
                 </nav>
             </div>
