@@ -1,3 +1,4 @@
+@import './colors.css';
 
 body {
   margin: 0;
@@ -7,9 +8,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(47, 50, 53);
+  background-color: var(--background-color);
   min-height: 100vh;
   overflow-x: hidden;
+  color: var(--letter-color);
 }
 
 code {

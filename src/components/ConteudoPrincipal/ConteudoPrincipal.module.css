@@ -9,15 +9,6 @@
     justify-content: center;
 }
 
-.link {
-    text-decoration: none;
-}
-
-.link:hover {
-    transform: scale(1.05);
-    transition: transform 0.2s ease-in-out;
-}
-
 @media screen and (max-width: 768px) {
     .container {
         flex-direction: row;

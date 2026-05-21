@@ -1,12 +1,9 @@
-* {
-    color: white;
-}
 
 .header {
     display: flex;
     margin: 0;
     padding: 20px;
-    background-color: rgb(86, 86, 253);
+    background-color: var(--main-color);
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
@@ -40,7 +37,7 @@
 
 .headerLink:hover {
     transition: 1%;
-    color: rgb(47, 50, 53);
+    color: var(--background-color);
     background-color: white;
     border-radius: 5px;
     transform: scale(0.45rem);
