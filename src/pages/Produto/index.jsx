@@ -1,9 +1,13 @@
 import { useParams } from "react-router";
 import styles from "./Produto.module.css";
 import listaProdutos from "../../data/produtos";
+import { useCart } from "../../contexts/CartContext.jsx";
 
 function Produto() {
+
+  const { adicionarItem } = useCart();
   const { id } = useParams();
+
   const produto = listaProdutos.find((p) => p.id === Number(id));
 
   if (!produto) {
@@ -23,7 +27,7 @@ function Produto() {
           <p className={styles.price}><strong>Preço:</strong> R$ {produto.preco.toFixed(2)}</p>
 
           {produto.em_estoque ? (
-            <p>Produto disponível</p>
+            <> <button onClick={() => adicionarItem(produto)}>Adicionar ao carrinho</button> </>
           ) : (
             <p>Produto indisponível</p>
           )}
