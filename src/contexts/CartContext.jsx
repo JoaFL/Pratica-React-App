@@ -19,6 +19,25 @@ export function CartProvider({ children }) {
         })
     }
 
+    function adicionarUnidade(id) {
+        setItens((prev) => prev.map((item) =>
+                item.id === id ? { ...item, quantidade: item.quantidade + 1 } : item
+            )
+        );
+    }
+
+    function removerUnidade(id) {
+        setItens((prev) =>
+            prev
+                .map((item) =>
+                    item.id === id
+                        ? { ...item, quantidade: item.quantidade - 1 }
+                        : item
+                )
+                .filter((item) => item.quantidade > 0)
+        );
+    }
+
     function removerItem(id) {
         setItens((prev) => prev.filter(((item) => item.id !== id)))
     }
@@ -29,7 +48,7 @@ export function CartProvider({ children }) {
 
     return (
         <CartContext.Provider value={{
-            itens, adicionarItem, removerItem, totalItens
+            itens, adicionarItem, adicionarUnidade, removerUnidade, removerItem, totalItens
         }}>{children}</CartContext.Provider>
     )
 }

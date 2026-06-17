@@ -1,17 +1,34 @@
-import { Link } from "react-router-dom";
-import styles from "./Cart.module.css";
+import styles from "./Cart.module.css"
+import { useCart } from "../../contexts/CartContext";
 
 function Cart() {
+    const { itens, adicionarUnidade, removerUnidade, removerItem } = useCart();
+
+    if (itens.length === 0) {
+        return <p>Seu carrinho está vazio</p>;
+    }
+
     return (
         <section className={styles.cartPage}>
-            <div className={styles.cartBox}>
-                <h1>Carrinho</h1>
-                <p>Seu carrinho está vazio no momento.</p>
-                <p>Adicione produtos ao carrinho para ver os itens aqui.</p>
-                <Link className={styles.catalogButton} to="/Catalog">
-                    Ver catálogo
-                </Link>
-            </div>
+            <h2 className={styles.title}>Carrinho</h2>
+
+            {itens.map((item) => (
+                <div className={styles.item} key={item.id}>
+
+                    <div className={styles.desc}>
+                        <strong className={styles.Name}>{item.nome}</strong> 
+                         - {item.quantidade}x - R{(item.preco * item.quantidade).toFixed(2)}
+                    </div>
+
+                    <div className={styles.buttons}>
+                        <button className={styles.decreaseButton} onClick={() => removerUnidade(item.id)}>-</button>
+
+                        <button className={styles.addButton} onClick={() => adicionarUnidade(item.id)}>+</button>
+
+                        <button className={styles.removeButton} onClick={() => removerItem(item.id)}>Remover</button>
+                    </div>
+                </div>
+            ))}
         </section>
     );
 }
