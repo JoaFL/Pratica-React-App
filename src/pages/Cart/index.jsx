@@ -2,7 +2,7 @@ import styles from "./Cart.module.css"
 import { useCart } from "../../contexts/CartContext";
 
 function Cart() {
-    const { itens, adicionarUnidade, removerUnidade, removerItem } = useCart();
+    const { itens, adicionarUnidade, removerUnidade, removerItem, valorTotal, finalizarPedido } = useCart();
 
     if (itens.length === 0) {
         return <p>Seu carrinho está vazio</p>;
@@ -29,6 +29,13 @@ function Cart() {
                     </div>
                 </div>
             ))}
+
+            <div>
+                <span>
+                    Total: R${valorTotal()}.
+                </span>
+                <button onClick={finalizarPedido()}>Finalizar Pedido</button>
+            </div>
         </section>
     );
 }

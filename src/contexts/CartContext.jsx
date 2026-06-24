@@ -7,6 +7,8 @@ const CartContext = createContext();
 export function CartProvider({ children }) {
     const [itens, setItens] = useState([]);
 
+    const [pedidos, setPedidos] = useState([]);
+
     function adicionarItem(produto) {
         setItens((prev) => {
             const jaExiste = prev.find((item) => item.id === produto.id);
@@ -53,12 +55,22 @@ export function CartProvider({ children }) {
     }
 
     function finalizarPedido() {
-        
+        if (itens.length() === 0) return;
+
+        const novoPedido = {
+            id: Date.now(),
+            date: new Date().toLocaleDateString("pt-BR"),
+            itens: itens,
+            total: valorTotal()
+        };
+
+        setPedidos((prev) => [...prev, novoPedido]);
+        setItens([]);
     }
 
     return (
         <CartContext.Provider value={{
-            itens, adicionarItem, adicionarUnidade, removerUnidade, removerItem, totalItens, valorTotal
+            itens, adicionarItem, adicionarUnidade, removerUnidade, removerItem, totalItens, valorTotal, finalizarPedido
         }}>{children}</CartContext.Provider>
     )
 }
