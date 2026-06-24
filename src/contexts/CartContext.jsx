@@ -20,7 +20,8 @@ export function CartProvider({ children }) {
     }
 
     function adicionarUnidade(id) {
-        setItens((prev) => prev.map((item) =>
+        setItens((prev) => 
+            prev.map((item) =>
                 item.id === id ? { ...item, quantidade: item.quantidade + 1 } : item
             )
         );
@@ -30,11 +31,9 @@ export function CartProvider({ children }) {
         setItens((prev) =>
             prev
                 .map((item) =>
-                    item.id === id
-                        ? { ...item, quantidade: item.quantidade - 1 }
-                        : item
+                    item.id === id? { ...item, quantidade: item.quantidade - 1 } : item
                 )
-                .filter((item) => item.quantidade > 0)
+                .filter((item) => item.quantidade > 0),
         );
     }
 
@@ -46,9 +45,20 @@ export function CartProvider({ children }) {
         return itens.reduce((acc, item) => acc + item.quantidade, 0)
     }
 
+    function valorTotal() {
+        return itens.reduce(
+            (acc, item) => acc + item.preco * item.quantidade,
+            0,
+        );
+    }
+
+    function finalizarPedido() {
+        
+    }
+
     return (
         <CartContext.Provider value={{
-            itens, adicionarItem, adicionarUnidade, removerUnidade, removerItem, totalItens
+            itens, adicionarItem, adicionarUnidade, removerUnidade, removerItem, totalItens, valorTotal
         }}>{children}</CartContext.Provider>
     )
 }
