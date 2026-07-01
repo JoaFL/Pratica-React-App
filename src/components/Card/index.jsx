@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from './Card.module.css';
+import { Button } from 'antd';
+
 
 export default function Card({ id, img, title, description, stock, price }) {
     return <>
@@ -9,7 +11,7 @@ export default function Card({ id, img, title, description, stock, price }) {
 
                 <img className={styles.img} src={img} alt={title} />
                 <Link to={`/Catalog/${id}`}>
-                    <button className={styles.price}>{stock ? `R$ ${price.toFixed(2).replace('.', ',')}` : 'Indisponível'}</button>
+                    <Button className={styles.price} type="primary">{stock ? `R$ ${price.toFixed(2).replace('.', ',')}` : 'Indisponível'}</Button>
                 </Link>
                 <h4 className={styles.title}>{title}</h4>
                 <p className={styles.description}>{description}</p>

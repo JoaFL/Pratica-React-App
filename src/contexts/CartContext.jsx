@@ -55,7 +55,7 @@ export function CartProvider({ children }) {
     }
 
     function finalizarPedido() {
-        if (itens.length() === 0) return;
+        if (itens.length === 0) return;
 
         const novoPedido = {
             id: Date.now(),

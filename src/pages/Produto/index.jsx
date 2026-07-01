@@ -2,6 +2,7 @@ import { useParams } from "react-router";
 import styles from "./Produto.module.css";
 import listaProdutos from "../../data/produtos";
 import { useCart } from "../../contexts/CartContext.jsx";
+import { Rate } from 'antd';
 
 function Produto() {
 
@@ -34,6 +35,7 @@ function Produto() {
           
           <button className={styles.buyButton} disabled={!produto.em_estoque}>Comprar</button>
           <p className={styles.description}><strong>Descrição:</strong> {produto.desc}</p>
+          <Rate />
           <p className={styles.category}>Categoria: {produto.categoria}</p>
           <p className={styles.id}>ID: {produto.id}</p>
         </div>

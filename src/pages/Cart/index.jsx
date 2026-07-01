@@ -34,7 +34,7 @@ function Cart() {
                 <span>
                     Total: R${valorTotal()}.
                 </span>
-                <button onClick={finalizarPedido()}>Finalizar Pedido</button>
+                <button onClick={() => finalizarPedido()}>Finalizar Pedido</button>
             </div>
         </section>
     );
