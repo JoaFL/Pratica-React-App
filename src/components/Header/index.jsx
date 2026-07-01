@@ -15,16 +15,16 @@ export default function Header() {
             </div>
             <div className={styles.headerBox}>
                 <Nav defaultActiveKey="Home">
-                    <Nav.Item defaultActiveKey="Home">
+                    <Nav.Item eventKey="Home">
                         <Link className={styles.headerLink} to={"/"}>Home</Link>
                     </Nav.Item>
-                    <Nav.Item defaultActiveKey="Catalog">
+                    <Nav.Item eventKey="Catalog">
                         <Link className={styles.headerLink} to={"/Catalog"}>Produtos</Link>
                     </Nav.Item>
-                    <Nav.Item defaultActiveKey="Cart">
+                    <Nav.Item eventKey="Cart">
                         <Link className={styles.headerLink} to={"/Cart"}>Carrinho ({totalItens()})</Link>
                     </Nav.Item>
-                    <Nav.Item defaultActiveKey="AboutUs">
+                    <Nav.Item eventKey="AboutUs">
                         <Link className={styles.headerLink} to={"/AboutUs"}>Sobre nós</Link>
                     </Nav.Item>
                 </Nav>
