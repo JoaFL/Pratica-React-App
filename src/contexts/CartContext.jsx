@@ -14,7 +14,14 @@ export function CartProvider({ children }) {
         localStorage.setItem("carrinho", JSON.stringify(itens))
     }, [itens])
 
-    const [pedidos, setPedidos] = useState([]);
+    const [pedidos, setPedidos] = useState(() => {
+        const salvo = localStorage.getItem('pedido');
+        return salvo ? JSON.parse(salvo) : []
+    });
+
+    useEffect(() => {
+        localStorage.setItem("pedido", JSON.stringify(itens))
+    }, [itens])
 
     function adicionarItem(produto) {
         setItens((prev) => {
