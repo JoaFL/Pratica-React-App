@@ -15,6 +15,7 @@ function AppRoutes() {
             <Route path="*" element={<NotFound/>} />
             <Route path="/Catalog/:id" element={<Produto/>} />
             <Route path="/Cart" element={<Cart/>} />
+            <Route path="/Orders" />
         </Routes>
     )
 }
