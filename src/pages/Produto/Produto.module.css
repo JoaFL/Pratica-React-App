@@ -1,11 +1,12 @@
 .container {
     display: flex;
     padding: 20px;
-    width: 100%;
+    width: fit-content;
+    color: black;
 }
 
 .info {
-    background-color: var(--main-color);
+    background-color: white;
     justify-items: space-evenly;
     margin-left: 10px;
 }
@@ -15,5 +16,5 @@ button {
 }
 
 img {
-    width: 300px;
+    width: 400px;
 }

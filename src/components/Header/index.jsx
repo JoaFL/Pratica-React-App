@@ -24,6 +24,9 @@ export default function Header() {
                     <Nav.Item eventKey="Cart">
                         <Link className={styles.headerLink} to={"/Cart"}>Carrinho ({totalItens()})</Link>
                     </Nav.Item>
+                    <Nav.Item>
+                        <Link className={styles.headerLink} to={"/Orders"}>Pedidos</Link>
+                    </Nav.Item>
                     <Nav.Item eventKey="AboutUs">
                         <Link className={styles.headerLink} to={"/AboutUs"}>Sobre nós</Link>
                     </Nav.Item>

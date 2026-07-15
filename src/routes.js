@@ -5,6 +5,7 @@ import AboutUs from "./pages/AboutUs";
 import NotFound from "./pages/NotFound";
 import Produto from "./pages/Produto";
 import Cart from "./pages/Cart";
+import Orders from "./pages/Orders"
 
 function AppRoutes() {
     return (
@@ -15,7 +16,7 @@ function AppRoutes() {
             <Route path="*" element={<NotFound/>} />
             <Route path="/Catalog/:id" element={<Produto/>} />
             <Route path="/Cart" element={<Cart/>} />
-            <Route path="/Orders" />
+            <Route path="/Orders" element={<Orders/>} />
         </Routes>
     )
 }

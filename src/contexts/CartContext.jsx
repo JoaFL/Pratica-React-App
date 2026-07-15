@@ -20,8 +20,8 @@ export function CartProvider({ children }) {
     });
 
     useEffect(() => {
-        localStorage.setItem("pedido", JSON.stringify(itens))
-    }, [itens])
+        localStorage.setItem("pedido", JSON.stringify(pedidos))
+    }, [pedidos])
 
     function adicionarItem(produto) {
         setItens((prev) => {
@@ -84,7 +84,7 @@ export function CartProvider({ children }) {
 
     return (
         <CartContext.Provider value={{
-            itens, adicionarItem, adicionarUnidade, removerUnidade, removerItem, totalItens, valorTotal, finalizarPedido
+            itens, adicionarItem, adicionarUnidade, removerUnidade, removerItem, totalItens, valorTotal, finalizarPedido, pedidos, setPedidos
         }}>{children}</CartContext.Provider>
     )
 }
