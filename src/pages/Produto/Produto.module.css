@@ -1,20 +1,18 @@
+
 .container {
-    display: flex;
-    padding: 20px;
-    width: fit-content;
     color: black;
+    display: flex;
+    border-radius: 10px;
+    background-color: white;
+    width: 60%;
+    justify-self: center;
+    margin: 25px;
+}
+
+.showcase {
+    border-right: black 2px solid;
 }
 
 .info {
-    background-color: white;
-    justify-items: space-evenly;
-    margin-left: 10px;
-}
-
-button {
-    color: black;
-}
-
-img {
-    width: 400px;
+    padding: 10px;
 }
