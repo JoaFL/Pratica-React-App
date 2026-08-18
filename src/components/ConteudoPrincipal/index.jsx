@@ -16,7 +16,7 @@ function ConteudoPrincipal() {
                     stock={produto.em_estoque}
                     img={produto.imagem}
                 />
-            </> 
+            </>
             ))}
         </div>
     
