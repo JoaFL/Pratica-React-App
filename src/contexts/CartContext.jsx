@@ -1,71 +1,42 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
+import * as regras from "../utils/Cart";
 
-// contexto do carrinho
 const CartContext = createContext();
 
-// provider do carrinho
 export function CartProvider({ children }) {
     const [itens, setItens] = useState(() => {
-        const salvo = localStorage.getItem('carrinho');
-        return salvo ? JSON.parse(salvo) : []
+        const salvo = localStorage.getItem("Cart");
+        return salvo ? JSON.parse(salvo) : [];
     });
 
     useEffect(() => {
-        localStorage.setItem("carrinho", JSON.stringify(itens))
-    }, [itens])
+        localStorage.setItem("Cart", JSON.stringify(itens));
+    }, [itens]);
 
-    const [pedidos, setPedidos] = useState(() => {
-        const salvo = localStorage.getItem('pedido');
-        return salvo ? JSON.parse(salvo) : []
-    });
-
-    useEffect(() => {
-        localStorage.setItem("pedido", JSON.stringify(pedidos))
-    }, [pedidos])
+    const [pedidos, setPedidos] = useState([]);
 
     function adicionarItem(produto) {
-        setItens((prev) => {
-            const jaExiste = prev.find((item) => item.id === produto.id);
-
-            if (jaExiste) {
-                return prev.map((item) => item.id === produto.id ? {...item, quantidade: item.quantidade + 1} : item);
-            }
-
-            return [...prev, {...produto, quantidade: 1}];
-        })
-    }
-
-    function adicionarUnidade(id) {
-        setItens((prev) => 
-            prev.map((item) =>
-                item.id === id ? { ...item, quantidade: item.quantidade + 1 } : item
-            )
-        );
-    }
-
-    function removerUnidade(id) {
-        setItens((prev) =>
-            prev
-                .map((item) =>
-                    item.id === id? { ...item, quantidade: item.quantidade - 1 } : item
-                )
-                .filter((item) => item.quantidade > 0),
-        );
+        setItens((prev) => regras.adicionarProduto(prev, produto));
     }
 
     function removerItem(id) {
-        setItens((prev) => prev.filter(((item) => item.id !== id)))
+        setItens((prev) => regras.removerProduto(prev, id));
+    }
+
+    function aumentarQuantidade(id) {
+        setItens((prev) => regras.aumentarQuantidade(prev, id));
+    }
+
+    function diminuirQuantidade(id) {
+        setItens((prev) => regras.diminuirQuantidade(prev, id));
     }
 
     function totalItens() {
-        return itens.reduce((acc, item) => acc + item.quantidade, 0)
+        return regras.contarItens(itens);
     }
 
     function valorTotal() {
-        return itens.reduce(
-            (acc, item) => acc + item.preco * item.quantidade,
-            0,
-        );
+        return regras.calcularTotal(itens);
     }
 
     function finalizarPedido() {
@@ -73,9 +44,9 @@ export function CartProvider({ children }) {
 
         const novoPedido = {
             id: Date.now(),
-            date: new Date().toLocaleDateString("pt-BR"),
+            data: new Date().toLocaleDateString("pt-BR"),
             itens: itens,
-            total: valorTotal()
+            total: valorTotal(),
         };
 
         setPedidos((prev) => [...prev, novoPedido]);
@@ -83,13 +54,23 @@ export function CartProvider({ children }) {
     }
 
     return (
-        <CartContext.Provider value={{
-            itens, adicionarItem, adicionarUnidade, removerUnidade, removerItem, totalItens, valorTotal, finalizarPedido, pedidos, setPedidos
-        }}>{children}</CartContext.Provider>
-    )
+        <CartContext.Provider
+        value={{
+            itens,
+            pedidos,
+            adicionarItem,
+            removerItem,
+            totalItens,
+            valorTotal,
+            aumentarQuantidade,
+            diminuirQuantidade,
+            finalizarPedido,
+        }}>
+        {children}
+    </CartContext.Provider>
+    );
 }
 
-// hook para usar o carrinho
 export function useCart() {
-    return useContext(CartContext)
+    return useContext(CartContext);
 }

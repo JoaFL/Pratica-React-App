@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import styles from "./Produto.module.css";
 import listaProdutos from "../../data/produtos";
 import { useCart } from "../../contexts/CartContext.jsx";

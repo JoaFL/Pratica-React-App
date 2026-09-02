@@ -15,4 +15,31 @@ describe ("", () => {
         expect(formatarPreco(10.25)).not.toContain(".")
         expect(formatarPreco(10.25)).toContain(",")
     });
+
+     test("formata zero com duas casas decimais", () => {
+        expect(formatarPreco(0)).toBe("R$ 0,00");
+    });
+
+    test("retorna zero para valores inválidos", () => {
+        expect(formatarPreco("10")).toBe("0,00");
+        expect(formatarPreco(NaN)).toBe("0,00");
+    });
+
+    test("preserva o sinal de valores negativos", () => {
+        expect(formatarPreco(-25.5)).toBe("R$ -25,50");
+    });
+
+    test("arredonda a terceira casa decimal", () => {
+        expect(formatarPreco(9.999)).toBe("R$ 10,00");
+    });
+
+    test("aceita zero sem quebrar", () => {
+        expect(formatarPreco(0)).toBe("R$ 0,00");
+    });
+
+    test("não quebra quando o preço não veio do banco", () => {
+        expect(formatarPreco(undefined)).toBe("R$ 0,00");
+        expect(formatarPreco(null)).toBe("R$ 0,00");
+        expect(formatarPreco("banana")).toBe("R$ 0,00");
+    });
 })
