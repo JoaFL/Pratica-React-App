@@ -2,13 +2,12 @@ import { formatarPreco } from "./formatarPreco";
 
 describe ("", () => {
     test("formata um valor comum no padrão brasileiro", () => {
-        const resultado = formatarPreco(99.9);
-        expect(resultado).tobe("R$ 99,90");
+        expect(formatarPreco(99.9)).toBe("R$ 99,90");
     });
 
     test("sempre mostra duas casas decimais", () => {
-        expect(formatarPreco(19)).tobe("R$ 19,00");
-        expect(formatarPreco(1234.5)).tobe("R$ 1234,50")
+        expect(formatarPreco(19)).toBe("R$ 19,00");
+        expect(formatarPreco(1234.5)).toBe("R$ 1234,50")
     });
 
     test("usa virgula, e não ponto, como separador", () => {
@@ -21,8 +20,8 @@ describe ("", () => {
     });
 
     test("retorna zero para valores inválidos", () => {
-        expect(formatarPreco("10")).toBe("0,00");
-        expect(formatarPreco(NaN)).toBe("0,00");
+        expect(formatarPreco("10")).toBe("R$ 0,00");
+        expect(formatarPreco(NaN)).toBe("R$ 0,00");
     });
 
     test("preserva o sinal de valores negativos", () => {
