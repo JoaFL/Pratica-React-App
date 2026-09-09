@@ -2,7 +2,7 @@ import styles from "./Cart.module.css"
 import { useCart } from "../../contexts/CartContext";
 
 function Cart() {
-    const { itens, adicionarUnidade, removerUnidade, removerItem, valorTotal, finalizarPedido } = useCart();
+    const { itens, removerItem, valorTotal, finalizarPedido, aumentarQuantidade, diminuirQuantidade } = useCart();
 
     if (itens.length === 0) {
         return <p>Seu carrinho está vazio</p>;
@@ -21,9 +21,9 @@ function Cart() {
                     </div>
 
                     <div className={styles.buttons}>
-                        <button className={styles.decreaseButton} onClick={() => removerUnidade(item.id)}>-</button>
+                        <button className={styles.decreaseButton} onClick={() => diminuirQuantidade(item.id)}>-</button>
 
-                        <button className={styles.addButton} onClick={() => adicionarUnidade(item.id)}>+</button>
+                        <button className={styles.addButton} onClick={() => aumentarQuantidade(item.id)}>+</button>
 
                         <button className={styles.removeButton} onClick={() => removerItem(item.id)}>Remover</button>
                     </div>
